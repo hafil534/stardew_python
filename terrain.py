@@ -3,15 +3,19 @@ import pygame
 class Terrain:
     PXCASE = 50  #taille case en px 
 
-    def __init__(self, largeur, longeur, posx, posy,spritename):
+    def __init__(self, largeur, longueur, posx, posy,spritename):
     	#dimentions et norbre de cases dans la grille
         self.posx = posx
         self.posy = posy    
         self.largeur = largeur 
-        self.longeur = longeur
+        self.longeur = longueur
         self.nbcasesLarg = largeur // self.PXCASE
-        self.nbcasesLong = longeur // self.PXCASE
+        self.nbcasesLong = longueur // self.PXCASE
+        # charger l'image du terrain
         self.sprite = pygame.image.load(f'assets/sprites/terrain/{spritename}.png')
+        # redimensionner l'image du terrain pour qu'elle prennent la longeur et la largeur a laquelle on linitialise
+        self.sprite = pygame.transform.scale(self.sprite,(largeur, longueur))
+        # grille du terrain
         self.grid = [
             [
                 {
