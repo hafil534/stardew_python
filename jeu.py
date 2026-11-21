@@ -10,4 +10,4 @@ class Jeu :
         self.joueur = Joueur()
         #stocker les touches appuyés
         self.pressed = {}
-        self.blé = Plante("blé",10000)
+       

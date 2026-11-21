@@ -1,6 +1,7 @@
 import pygame
 from jeu import Jeu
 from terrain import Terrain
+from plante import Plante
 
 #ouverture de la fenetre pygame
 pygame.init()
@@ -14,7 +15,8 @@ ecran = pygame.display.set_mode((jeu.largeur, jeu.hauteur))
 background = pygame.image.load("assets/background.jpg")
 # instance terrain
 terr = Terrain(500,500,600,100,"terrain")
-terr.planter(0,0,jeu.blé)
+terr.planter(0,0,Plante("blé",10000))
+
 running = True
 
 
@@ -24,7 +26,7 @@ while running:
     terr.afficher(ecran)
      #ajouter l'image du joueur dans l'interface pygame
     ecran.blit(jeu.joueur.image,jeu.joueur.rect)
-    jeu.blé.croissance()
+    
     
 
 
