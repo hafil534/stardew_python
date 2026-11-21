@@ -33,8 +33,10 @@ while running:
     
      # vérifie ou le jouer veut aller (droite, gauche, haut, bas)
     if jeu.pressed.get(pygame.K_RIGHT) and jeu.joueur.rect.x + jeu.joueur.rect.width <ecran.get_width():
+        jeu.joueur.image = jeu.joueur.imagedroit
         jeu.joueur.move_right()
     if jeu.pressed.get(pygame.K_LEFT) and jeu.joueur.rect.x >0:
+        jeu.joueur.image = jeu.joueur.imagegauche
         jeu.joueur.move_left()
     if jeu.pressed.get(pygame.K_UP) and jeu.joueur.rect.y > 0 :
         jeu.joueur.move_up()
