@@ -14,8 +14,8 @@ ecran = pygame.display.set_mode((jeu.largeur, jeu.hauteur))
 #image de fond
 background = pygame.image.load("assets/background.jpg")
 # instance terrain
-terr = Terrain(500,500,600,100,"terrain")
-terr.planter(0,0,Plante("blé",10000))
+terr = Terrain(500,500,600,100,"champ")
+
 
 running = True
 
