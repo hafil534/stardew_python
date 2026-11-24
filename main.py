@@ -41,7 +41,7 @@ while running:
             if terr.grid[y][x]["plante"] is not None:
                 terr.grid[y][x]["plante"].croissance()
 
-    
+    print(jeu.joueur.procheplante(terr))
 
     
      # vérifie ou le jouer veut aller (droite, gauche, haut, bas)
