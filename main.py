@@ -15,7 +15,7 @@ ecran = pygame.display.set_mode((jeu.largeur, jeu.hauteur))
 background = pygame.image.load("assets/background.jpg")
 # instance terrain
 terr = Terrain(500,500,600,100,"champ")
-
+terr.planter(0,0,Plante("blé",10000))
 #test 
 bloc_test = pygame.image.load("assets/sprites/terrain/bloc_test_collision.png")
 pos_bloc_test = bloc_test.get_rect()
@@ -34,7 +34,7 @@ while running:
     
     ecran.blit(bloc_test, pos_bloc_test)
     
-
+    print(jeu.joueur.procheplante(terr))
 
     
      # vérifie ou le jouer veut aller (droite, gauche, haut, bas)

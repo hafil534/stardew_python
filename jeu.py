@@ -10,4 +10,3 @@ class Jeu :
         self.joueur = Joueur()
         #stocker les touches appuyés
         self.pressed = {}
-       

@@ -30,7 +30,8 @@ class Plante(pygame.sprite.Sprite):
         elif temps >= 0:
             self.image = self.images[0]
            
-                   
-
+    def plantepret (self):
+        return pygame.time.get_ticks() - self.date_plante >= self.tempsPousse
+           
 
     

@@ -26,3 +26,17 @@ class Joueur(pygame.sprite.Sprite) :
 
     def move_down(self):
         self.rect.y += 4
+
+
+    def procheplante (self,terrain):
+        #case du terrain sur lequel le perso se trouve
+        caseperso_x =( self.rect.centerx - terrain.posx) // terrain.PXCASE
+        caseperso_y = (self.rect.centery - terrain.posy) // terrain.PXCASE
+        # le perso peut detecter les plante qui se trouve jusqu'a une case après lui
+        for y in range(caseperso_y - 1,caseperso_y + 2):
+            for x in range(caseperso_x - 1,caseperso_x + 2):
+                if 0 <= x <terrain.nbcasesLarg and 0 <= y < terrain.nbcasesLong:
+                    if terrain.grid[x][y]["plante"] is not None:
+                             return True
+        return False
+                        
