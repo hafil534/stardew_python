@@ -16,6 +16,11 @@ background = pygame.image.load("assets/background.jpg")
 # instance terrain
 terr = Terrain(500,500,600,100,"champ")
 
+#test 
+bloc_test = pygame.image.load("assets/sprites/terrain/bloc_test_collision.png")
+pos_bloc_test = bloc_test.get_rect()
+pos_bloc_test.x = 0 
+pos_bloc_test.y = 0 
 
 running = True
 
@@ -27,6 +32,7 @@ while running:
      #ajouter l'image du joueur dans l'interface pygame
     ecran.blit(jeu.joueur.image,jeu.joueur.rect)
     
+    ecran.blit(bloc_test, pos_bloc_test)
     
 
 
@@ -42,6 +48,10 @@ while running:
         jeu.joueur.move_up()
     if jeu.pressed.get(pygame.K_DOWN) and jeu.joueur.rect.y + jeu.joueur.rect.height < ecran.get_height() :
         jeu.joueur.move_down()
+
+    
+    if jeu.joueur.rect.colliderect(pos_bloc_test) :
+        pygame.quit()   
 
   
     #afficher image de fond
