@@ -15,7 +15,7 @@ ecran = pygame.display.set_mode((jeu.largeur, jeu.hauteur))
 background = pygame.image.load("assets/background.jpg")
 # instance terrain
 terr = Terrain(500,500,600,100,"champ")
-
+terr.planter(2,2,Plante("carote",10000))
 #test 
 bloc_test = pygame.image.load("assets/sprites/terrain/bloc_test_collision.png")
 pos_bloc_test = bloc_test.get_rect()
@@ -58,7 +58,7 @@ while running:
         jeu.joueur.move_down()
         # planter avec la touche p
     if jeu.pressed.get(pygame.K_p):
-        terr.planter(caseperso_x,caseperso_y,Plante("blé",10000))
+        terr.planter(caseperso_x,caseperso_y,Plante("ble",10000))
     if (jeu.pressed.get(pygame.K_r)
     and terr.grid[caseperso_y][caseperso_x]["plante"] is not None
     and terr.grid[caseperso_y][caseperso_x]["plante"].plantepret()):

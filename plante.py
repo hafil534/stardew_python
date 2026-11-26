@@ -1,7 +1,7 @@
 import pygame;
 
 class Plante(pygame.sprite.Sprite):
-    ETATS = [ "graine","planteetp2", "plantefinal"]
+    ETATS = [ "graine","pousse", "plante"]
     def __init__(self,nom,tempspousse):
         super().__init__()
         self.nom = nom
@@ -11,7 +11,7 @@ class Plante(pygame.sprite.Sprite):
         
         self.images = [
         pygame.transform.scale(
-        pygame.image.load(f"assets/sprites/plante/{etat}.png"),
+        pygame.image.load(f"assets/sprites/plante/{nom}_{etat}.png"),
         (50, 50)
     )
     for etat in self.ETATS
