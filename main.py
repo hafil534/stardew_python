@@ -36,6 +36,7 @@ while running:
     ecran.blit(bloc_test, pos_bloc_test)
     caseperso_x =( jeu.joueur.rect.centerx - terr.posx) // terr.PXCASE
     caseperso_y = (jeu.joueur.rect.centery - terr.posy) // terr.PXCASE
+    # faire grandir les plantes 
     for y in range(terr.nbcasesLong):
         for x in range(terr.nbcasesLarg):
             if terr.grid[y][x]["plante"] is not None:
@@ -55,9 +56,12 @@ while running:
         jeu.joueur.move_up()
     if jeu.pressed.get(pygame.K_DOWN) and jeu.joueur.rect.y + jeu.joueur.rect.height < ecran.get_height() :
         jeu.joueur.move_down()
+        # planter avec la touche p
     if jeu.pressed.get(pygame.K_p):
         terr.planter(caseperso_x,caseperso_y,Plante("blé",10000))
-    if jeu.pressed.get(pygame.K_r) :
+    if (jeu.pressed.get(pygame.K_r)
+    and terr.grid[caseperso_y][caseperso_x]["plante"] is not None
+    and terr.grid[caseperso_y][caseperso_x]["plante"].plantepret()):
         terr.retireplante(caseperso_x,caseperso_y)
 
     
