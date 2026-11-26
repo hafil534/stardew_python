@@ -33,6 +33,13 @@ class Terrain:
                 return True
         return False
 
+    def retireplante(self,x,y):
+        if 0 <= x < self.nbcasesLarg and 0 <= y < self.nbcasesLong:
+            if self.grid[y][x]["plante"] is not None:
+                self.grid[y][x]["plante"] = None
+                return True
+        return False
+
     def afficher(self, surface_ecran):
         surface_ecran.blit(self.sprite, (self.posx, self.posy))
         

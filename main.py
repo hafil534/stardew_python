@@ -41,7 +41,7 @@ while running:
             if terr.grid[y][x]["plante"] is not None:
                 terr.grid[y][x]["plante"].croissance()
 
-    print(jeu.joueur.procheplante(terr))
+    
 
     
      # vérifie ou le jouer veut aller (droite, gauche, haut, bas)
@@ -57,6 +57,9 @@ while running:
         jeu.joueur.move_down()
     if jeu.pressed.get(pygame.K_p):
         terr.planter(caseperso_x,caseperso_y,Plante("blé",10000))
+    if jeu.pressed.get(pygame.K_r) :
+        terr.retireplante(caseperso_x,caseperso_y)
+
     
     if jeu.joueur.rect.colliderect(pos_bloc_test) :
         pygame.quit()   
