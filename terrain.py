@@ -1,7 +1,7 @@
 import pygame
 
 class Terrain:
-    PXCASE = 50  #taille case en px 
+    PXCASE = 60  #taille case en px 
 
     def __init__(self, largeur, longueur, posx, posy,spritename):
     	#dimentions et norbre de cases dans la grille
@@ -14,7 +14,7 @@ class Terrain:
         # charger l'image du terrain
         self.sprite = pygame.image.load(f'assets/sprites/terrain/{spritename}.png')
         # redimensionner l'image du terrain pour qu'elle prennent la longeur et la largeur a laquelle on linitialise
-        self.sprite = pygame.transform.scale(self.sprite,(largeur, longueur))
+        #self.sprite = pygame.transform.scale(self.sprite,(largeur, longueur))
         # grille du terrain
         self.grid = [
             [
@@ -27,14 +27,14 @@ class Terrain:
         ]
     
     def planter(self, x, y, plante):
-        if 0 <= x < self.nbcasesLarg and 0 <= y < self.nbcasesLong:
+        if 1 <= x < self.nbcasesLarg-1 and 1 <= y < self.nbcasesLong-1:
             if self.grid[y][x]["plante"] is None:
                 self.grid[y][x]["plante"] = plante
                 return True
         return False
 
     def retireplante(self,x,y):
-        if 0 <= x < self.nbcasesLarg and 0 <= y < self.nbcasesLong:
+        if 1 <= x < self.nbcasesLarg-1 and 1 <= y < self.nbcasesLong-1:
             if self.grid[y][x]["plante"] is not None:
                 self.grid[y][x]["plante"] = None
                 return True

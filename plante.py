@@ -10,10 +10,9 @@ class Plante(pygame.sprite.Sprite):
         
         
         self.images = [
-        pygame.transform.scale(
-        pygame.image.load(f"assets/sprites/plante/{nom}_{etat}.png"),
-        (50, 50)
-    )
+        pygame.image.load(f"assets/sprites/plante/{nom}_{etat}.png")
+
+    
     for etat in self.ETATS
 ]
         self.image = self.images[0]
