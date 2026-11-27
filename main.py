@@ -39,11 +39,13 @@ while running:
      #ajouter l'image du joueur dans l'interface pygame
     #ecran.blit(jeu.joueur.image,jeu.joueur.rect)
     
-    if n == 0 :                                                         # ici on regroupe tout ce qu'il faut afficher dans le monde 0 (monde de depart)
+    if n == 0 :      
+                                                           # ici on regroupe tout ce qu'il faut afficher dans le monde 0 (monde de depart)
         ecran.blit(background,(0,0))                                    # ecran noir si on l'enleve
         terr.afficher(ecran)                                            # affiche le terrain pour la recolte  , lorsqu'on l'enleve le personnage va tres vite
         marche.afficher_portail(ecran)                                  # affiche le bloc portail                                  
         ecran.blit(jeu.joueur.image,jeu.joueur.rect)                    # affiche le personnage 
+        factoriser,liste 
         if jeu.pressed.get(pygame.K_p):
             terr.planter(caseperso_x,caseperso_y,Plante("blé",10000))   # permet de planter avec la touche p
 
@@ -57,7 +59,7 @@ while running:
         if jeu.pressed.get(pygame.K_r):
             n = 0 
             jeu.joueur.rect.x,jeu.joueur.rect.y =  50,320
-
+            # rafraichissement,synchroniser les mondes, ralentir le jeu pour que ce soit plus agreable , rien ne le ralenti . 
         #ecran.blit(marche.bloc_marche, marche.pos_bloc_marche)          # affiche l'endroit referencant le marche
         #marche.afficher_endroit(ecran=ecran)
 
