@@ -2,9 +2,15 @@ import pygame
 from jeu import Jeu
 from terrain import Terrain
 from plante import Plante
+from portail import Portail
 
 #ouverture de la fenetre pygame
 pygame.init()
+
+marche = Portail(nom_endroit="marche_test",nom_bloc_collision="bloc_collision",portailpos_x=1280//4,portailpos_y=0)
+
+
+
 #renommer la fenetre
 pygame.display.set_caption("Stardew Valley")
   #instance jeu
@@ -17,23 +23,50 @@ background = pygame.image.load("assets/background.jpg")
 terr = Terrain(847,841,200,0,"champ")
 terr.planter(2,2,Plante("carote",10000))
 #test 
-bloc_test = pygame.image.load("assets/sprites/terrain/bloc_test_collision.png")
-pos_bloc_test = bloc_test.get_rect()
-pos_bloc_test.x = 0 
-pos_bloc_test.y = 0 
+#bloc_test = pygame.image.load("assets/sprites/terrain/bloc_test_collision.png")
+#pos_bloc_test = bloc_test.get_rect()
+#pos_bloc_test.x = 0 
+#pos_bloc_test.y = 0 
 
 
 running = True
 
-
+n = 0 
 while running:
     #ajouter l'image de fond dans l'interface pygame
-    ecran.blit(background,(0,0))
-    terr.afficher(ecran)
+    #ecran.blit(background,(0,0))
+    #terr.afficher(ecran)
      #ajouter l'image du joueur dans l'interface pygame
-    ecran.blit(jeu.joueur.image,jeu.joueur.rect)
+    #ecran.blit(jeu.joueur.image,jeu.joueur.rect)
     
-    ecran.blit(bloc_test, pos_bloc_test)
+    if n == 0 :                                                         # ici on regroupe tout ce qu'il faut afficher dans le monde 0 (monde de depart)
+        ecran.blit(background,(0,0))                                    # ecran noir si on l'enleve
+        terr.afficher(ecran)                                            # affiche le terrain pour la recolte  , lorsqu'on l'enleve le personnage va tres vite
+        marche.afficher_portail(ecran)                                  # affiche le bloc portail                                  
+        ecran.blit(jeu.joueur.image,jeu.joueur.rect)                    # affiche le personnage 
+        if jeu.pressed.get(pygame.K_p):
+            terr.planter(caseperso_x,caseperso_y,Plante("blé",10000))   # permet de planter avec la touche p
+
+        if marche.collision(jeu.joueur.rect) : 
+            n = 1
+            jeu.joueur.rect.x,jeu.joueur.rect.y =  1280//4 ,320
+
+    if n == 1 : 
+        marche.afficher_endroit(ecran=ecran)
+        ecran.blit(jeu.joueur.image,jeu.joueur.rect)
+        if jeu.pressed.get(pygame.K_r):
+            n = 0 
+            jeu.joueur.rect.x,jeu.joueur.rect.y =  50,320
+
+        #ecran.blit(marche.bloc_marche, marche.pos_bloc_marche)          # affiche l'endroit referencant le marche
+        #marche.afficher_endroit(ecran=ecran)
+
+
+
+
+
+
+    #ecran.blit(bloc_test, pos_bloc_test)
     caseperso_x =( jeu.joueur.rect.centerx - terr.posx) // terr.PXCASE
     caseperso_y = (jeu.joueur.rect.centery - terr.posy) // terr.PXCASE
     # faire grandir les plantes 
@@ -66,8 +99,8 @@ while running:
                 terr.retireplante(caseperso_x,caseperso_y)
 
     
-    if jeu.joueur.rect.colliderect(pos_bloc_test) :
-        pygame.quit()   
+    #if jeu.joueur.rect.colliderect(pos_bloc_test) :
+     #   pygame.quit()   
 
   
     #afficher image de fond
